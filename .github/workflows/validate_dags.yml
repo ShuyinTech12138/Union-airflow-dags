@@ -1,0 +1,19 @@
+name: Validate Airflow DAGs
+
+on: [push]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - name: Install ruff
+        run: pip install ruff
+      - name: Lint DAGs
+        run: ruff check ./dags
+      - name: Validate DAG syntax
+        run: python -m py_compile dags/biweekly_hours_report.py dags/test_mssql.py
