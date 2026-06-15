@@ -1,7 +1,6 @@
 from airflow import DAG
 from airflow.providers.microsoft.mssql.hooks.mssql import MsSqlHook
-from airflow.providers.standard.operators.python import PythonOperator
-from datetime import datetime, timedelta
+from datetime import datetime
 import pandas as pd
 from airflow.operators.python import PythonOperator, ShortCircuitOperator
 import smtplib
